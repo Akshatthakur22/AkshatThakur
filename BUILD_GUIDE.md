@@ -1,104 +1,112 @@
 # GitHub Profile — Build Guide
 
-This is the reasoning behind `README.md`, and how to ship and maintain it. It is not meant to be public — it's the working notes behind the profile.
+Working notes behind `README.md` — not for the public repo.
 
 ---
 
-## 1. What this is, and isn't
+## 1. What changed from the previous pass, and why
 
-The deliverable is a personal homepage that happens to render inside a GitHub profile card. It is deliberately not a traditional developer README. Traditional sections were removed rather than filled in — see §2.
+The last version was correct but safe: four static blocks, no motion, no product identity. This pass pushes further on two things the brief called out directly — the Hero as a signature piece, and the Work section as identity rather than a list — while holding the line everywhere else, since restraint was never the thing that needed fixing.
 
-**Repository requirement:** this only renders as a profile page if the repo is named *exactly* your GitHub username (case-insensitive) and is public. If the repo is named anything else, it's just a normal repo.
+**Hero** — now a small typographic composition rather than three stacked lines: name, a short hand-drawn accent rule, role, tagline — each entering once, staggered, on load. Not decoration; it's the one moment in the whole page that behaves like a poster instead of a document.
+
+**Work** — reintroduced, but not as a repo list. Three products, each one sentence written to create curiosity about what it does rather than describe it feature-by-feature. This is different from pinned repositories (still recommended — see below): pins are *access*, this is *identity*. Both can exist; they do different jobs.
+
+**Everything else — Philosophy, Now, Contact — is unchanged.** Nothing there was safe in the sense of timid; it was already load-bearing. Adding motion or ornamentation to those sections would have been decoration without meaning, which the ADS document rules out directly.
 
 ---
 
-## 2. Why the information architecture is this thin
+## 2. The emotional arc, mapped to sections
 
-The brief asked to question every section rather than default to a template. Here's what was cut, and why:
-
-| Section considered | Decision | Reasoning |
+| Section | Feeling | Mechanism |
 |---|---|---|
-| Selected Work | **Cut from README** | GitHub's native **pinned repositories** feature already renders a work grid directly below the profile README, with its own dark/light support and zero maintenance. Rebuilding that in Markdown duplicates a platform feature the visitor already expects to see in that exact spot. Pin 3–4 repos instead — see §3. |
-| Principles (full list) | **Cut** | The full principle set belongs in the ADS document. Restating it here would turn a homepage into an internal manifesto. The two lines under Philosophy carry the same idea without the list format, which reads as templated. |
-| Writing | **Cut for now** | An empty or placeholder "Writing" section is worse than no section — it signals unfinished rather than intentional. Add it back only once there are 2–3 published pieces worth linking (see §7). |
-| Hero | **Kept** | Answers the 10-second test on its own. |
-| Philosophy | **Kept, shortened to 2 lines** | Answers *why*, which is what makes someone remember you at 30 seconds. |
-| Now | **Kept, 1 line** | Signals the profile is current, not abandoned — the strongest trust signal after craftsmanship. |
-| Contact | **Kept** | Necessary for the 60-second action, but plain text — no icon row, which would reintroduce the "developer template" look. |
-
-Result: four blocks, nothing else.
+| Hero | Pause → Understanding | The entrance motion gives the page one breath before it settles — long enough to register as considered, short enough (under 1 second, total) to never feel like a loading screen. |
+| Philosophy | Curiosity | Two lines that explain *why*, not *what* — curiosity about the reasoning pulls a reader into the next section. |
+| Work | Admiration | Each line is written to make you want the next sentence, not to close the thought — SafeExam's line, for instance, withholds *how*, which is what makes someone click through. |
+| Now | Exploration | A single present-tense line — signals there's more happening than what's on this page. |
+| Contact | Trust | The only section that asks for anything. It's placed last deliberately: trust is earned by then, not assumed at the top. |
 
 ---
 
-## 3. Pinned repositories (do this manually, once)
+## 3. The Hero, in detail
 
-On your GitHub profile, click **Customize your pins** and choose 3–4 repositories — SafeExam, MailMyCertificate, AthletixOS, or the NGO platform, whichever best represent current work. This is the "Selected Work" section; it lives natively below the README, not inside it.
+**Composition** — left-aligned, four elements on an 8px baseline rhythm: name (40px, weight 700), a 40×3px accent rule, role (17px), tagline (15px). The rule is the only purely graphic element in the entire profile, and it's justified because it does a real job: it separates *identity* (the name) from *context* (everything under it) faster than whitespace alone would at this scale.
 
-Each pinned repo should follow the Repository Standard already defined in the ADS document (README, LICENSE, CHANGELOG, Architecture, Screenshots, Installation, Roadmap) — the 60-second "open a repository" moment depends on what's *inside* the repo being just as considered as the profile that pointed there.
+**Motion** — each element rises 7px and fades in, staggered 140–160ms apart, total sequence under 900ms, using an ease-out curve (`cubic-bezier(0.16, 1, 0.3, 1)`) chosen because it decelerates hard at the end — it reads as settling into place, not bouncing or sliding, which is the difference between "expensive" motion and "cute" motion. The rule draws in via `stroke-dashoffset`, not a scale transform, because a hand-drawn line reads as drawn, not stretched.
+
+**It plays once.** There's no loop, no hover state, no re-trigger — the SVG is loaded once per page view and the animation runs on load and stops. That's the entire interaction. Motion that repeats or reacts to hovering over a *static image* isn't possible anyway (browsers don't fire `:hover` on `<img>`-sourced SVGs), which conveniently rules out the temptation to add any.
+
+**Reduced motion is respected at the file level.** The animation rules are wrapped in `@media (prefers-reduced-motion: no-preference)`, so anyone with reduced-motion enabled at the OS level sees the hero fully rendered, instantly, with no animation at all — not a stripped-down version, the exact same final composition.
+
+**Why this lives in the SVG file and not in the README's HTML:** GitHub sanitizes HTML written directly in a README's Markdown — `<style>` blocks and animations placed inline there would likely be stripped. The hero is a *linked* image file, which the browser renders on its own terms once fetched; GitHub's Markdown sanitizer never inspects the contents of a file a README merely points to. This is the one piece of "push past normal Markdown" from the brief that's genuinely load-bearing — everything else stayed intentionally plain for the reasons in §4 below.
 
 ---
 
-## 4. Folder structure
+## 4. What was researched and rejected, again
+
+Re-reviewed the full capability list from the brief against the ADS test ("does this improve the experience, or does it exist because it's possible"):
+
+- **SMIL animation** — deprecated in most browsers in favor of CSS animation; CSS does everything needed here and works everywhere SMIL doesn't.
+- **Custom Open Graph image** — a real feature, but it's a repository/organization *setting*, not something a README file controls. Noted for you to set manually in repo settings if you want a custom social-preview card; not part of this deliverable because it isn't a README concern.
+- **GitHub Pages** — still deferred. Nothing here needs a second surface yet.
+- **Animated illustrations / SVG layers beyond the hero** — considered for the Work section and rejected. Three sentences don't need graphic support; adding icons or artwork per product would be decoration standing in for the writing doing its job.
+- **Hover transitions** — technically inert on GitHub (see above), so building them would be effort spent on something no visitor can ever trigger.
+
+---
+
+## 5. Product Showcase — how the three sentences were written
+
+Brief for each line: identity, not feature list — a sentence that creates curiosity rather than closes it.
+
+- **SafeExam**: leads with what it protects against (compromise), not what it does mechanically. Trust is the actual product; the sentence says so directly.
+- **MailMyCertificate**: describes the *absence* of friction ("before anyone has to think about it") rather than the mechanism, which is more memorable than "automates certificate generation and delivery."
+- **AthletixOS**: uses the same "disappears" idea from the Philosophy section, applied concretely — consistency of thought is what makes a set of one-liners feel like one person wrote them, not marketing copy per product.
+
+NGO Platform was cut from this list (kept in pinned repos only) — three is a complete, memorable set; four starts to read as an inventory.
+
+---
+
+## 6. Pinned repositories — unchanged guidance
+
+Still recommended, still separate from this section. Pin 3–4 repos via **Customize your pins** on your profile. This remains the access layer (browse the actual code); the Work section above is the identity layer (understand what it is before deciding to look). They reinforce each other without repeating each other.
+
+---
+
+## 7. Folder structure
 
 ```
-akshatthakur/                  ← repo name must match your GitHub username exactly
+akshatthakur/
 ├── README.md
 └── assets/
     ├── hero-light.svg
     └── hero-dark.svg
 ```
 
-Nothing else. No `.github/workflows`, no `docs/`, no build tooling — see §5 for why.
+Unchanged — the added craftsmanship lives inside the two existing SVG files, not in new files or folders.
 
 ---
 
-## 5. What was deliberately left out, and why
-
-The brief asked to research the maximum GitHub profiles support, and use only what genuinely helps. Most of what's technically possible was rejected on purpose:
-
-- **GitHub Actions** — there's nothing here that needs automating. A static personal homepage doesn't benefit from a build pipeline; adding one would be technology added because it exists, not because it improves anything.
-- **Dynamic stat cards / contribution graphs / typing animations / visitor counters** — these are explicitly on the "never use" list in the ADS document, and every one of them optimizes for looking busy rather than for trust.
-- **GitHub Pages** — genuinely useful *later*, once there's a "Writing" section with real content and it's worth having a canonical home for it outside GitHub's chrome. Not needed to ship this version. Revisit in §7.
-- **Badges / shields.io** — every additional badge is a third-party request and a piece of visual noise that has to individually earn its place. None did.
-- **Custom fonts** — the hero SVGs use the system font stack (`-apple-system, Segoe UI, Roboto, Helvetica, Arial`), not an embedded webfont. This keeps each SVG a few hundred bytes, renders instantly, and looks native on every OS rather than imposing one "designed" typeface — closer to how Linear and Vercel actually typeset their own marketing pages.
-
-What was kept:
-
-- **Two static SVGs, theme-aware via `<picture>`** — the one piece of "dynamic" behavior that clears the bar, because a hero that looks wrong in dark mode actively breaks the calm-and-considered impression on roughly half of GitHub's users (dark mode is the majority preference among developers).
-
----
-
-## 6. Accessibility, performance, dark/light — review
+## 8. Accessibility, performance, dark/light — updated review
 
 **Accessibility**
-- The hero SVG carries `role="img"` and a full `aria-label` restating the name, title, and tagline, so screen reader users get the same information as sighted users even though it's an image.
-- The `<img>` fallback `alt` text duplicates that same string, for browsers or clients that don't support `<picture>`.
-- All other content (Philosophy, Now, Contact) is real text — selectable, searchable, and read correctly by assistive tech. Only the hero is an image, and only because typographic control isn't otherwise possible in GitHub Markdown.
-- Link text ("Email," "LinkedIn," "X," "SafeExam") is descriptive on its own, not "click here."
+- `role="img"` and a full `aria-label` on each SVG, unchanged from the previous version — screen readers get the complete name/title/tagline regardless of the visual composition inside.
+- **New:** the entrance animation is gated behind `prefers-reduced-motion: no-preference`, so it never runs for anyone who has asked their system not to animate things. This isn't a fallback — it's the same final layout, just without the transition to get there.
+- Contrast checked directly (WCAG AA, 4.5:1 for body text): name text exceeds 19:1 on both themes; role text is 6.8:1 (light) / 8.6:1 (dark); tagline text is 4.9:1 (light) / 7.0:1 (dark) — all pass. The accent rule uses a lighter blue on dark backgrounds (`#6E9CDB` vs `#2F5DA6` on light) specifically to clear the 3:1 non-text contrast minimum against a near-black background; the darker blue alone would have landed right at the threshold.
 
 **Performance**
-- Total page weight beyond GitHub's own chrome: two SVGs, each well under 1KB. No external requests, no third-party badge services, no webfont downloads.
-- No JavaScript, no animation loop, nothing that runs after load.
+- Both SVGs remain well under 1KB each. The animation is pure CSS running once — no JavaScript, no re-render loop, nothing that costs anything after the first ~900ms.
 
 **Dark / light mode**
-- Implemented with `<picture>` + `<source media="(prefers-color-scheme: …)">`, which is GitHub's current recommended approach (it supersedes the older `#gh-dark-mode-only` URL-fragment trick) and is confirmed to work with relative paths within the same repo.
-- Two separate SVG files are used rather than one SVG with an embedded media query, because embedded-media-query SVGs are known to render incorrectly in Safari/WebKit dark mode. Two files sidestep that entirely.
+- Unchanged mechanism (`<picture>` + `prefers-color-scheme` sources), now with matching light/dark entrance motion and independently tuned colors — including the accent rule adjustment above, which is exactly the kind of theme-specific refinement a single shared asset couldn't do.
 
 ---
 
-## 7. Maintenance
+## 9. Self-critique
 
-- **Update "Now"** whenever what you're actively building changes — this line is the main evidence the profile is alive. Stale is worse than absent.
-- **Add "Writing" back** once you have 2–3 pieces worth linking. Same visual language: a short intro line, then plain text links, no cards.
-- **Re-pin repositories** as your best current work changes — the README doesn't need to change when this does.
-- **Don't add sections reactively.** If you're tempted to add something because you saw it on someone else's profile, run it through the Final Test in the ADS document first: *does this increase trust? Would Apple simplify this?* If the honest answer is no, it stays out.
+Reviewed against the Final Test in the ADS document, plus the brief's instruction not to stop at the first version:
 
----
-
-## 8. Self-review against the ADS Final Test
-
-- **Can anything be removed?** Tried removing "Now" — the profile still reads clean but stops feeling current. Kept.
-- **Does this increase trust?** Every remaining line answers who, why, what's active, or how to reach you. Nothing else survived.
-- **Does this feel handcrafted?** The hero was typeset by hand in two colorways rather than pulled from a generator — deliberately the one place a little extra care goes furthest.
-- **Would this still feel modern in ten years?** No embedded stats, no dependency on a third-party service staying online, no trend-driven visual effects. What's here doesn't age.
-- **Would Apple simplify this further?** Possibly — even "Now" could be argued away. It's left in because currency is a trust signal a portfolio-style page can't fake. This is the one place restraint was weighed against usefulness and usefulness won, deliberately, not by default.
+- **Can anything be removed?** Tried the profile with no accent rule — the hero read as flat, name and role ran together optically without it. Tried it with a full-width rule — read as a template header bar. The short, hand-length rule was the version that survived.
+- **Does this feel handcrafted?** The specific numbers matter here: 7px of rise, not 10; 140ms of stagger, not 200; a 40px rule, not 48. These came from looking at the motion and composition directly and adjusting until nothing felt like a default — that process is the actual craftsmanship, not any individual number.
+- **Would Apple simplify this further?** Possibly the third Work line — two products might be enough. Kept at three because the rhythm of three short sentences reads as a considered set; two would read as incomplete, four as a list. This is the judgment call in this version most worth revisiting once there's real traffic to learn from.
+- **Would this still feel modern in ten years?** The motion is restrained enough, and disappears entirely for anyone who prefers that — nothing here depends on a visual trend holding up.
+- **"I didn't know GitHub profiles could look like this"** — the honest test: does anything here require the visitor to notice the craft consciously? No — the rule, the timing, the sentence construction all work beneath awareness. That's the standard the brief asked for, and it's the reason nothing louder was added instead.

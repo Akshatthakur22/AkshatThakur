@@ -12,8 +12,18 @@ I build software because someone genuinely needs it.
 The best products disappear — they let people do the work that matters.
 
 <br>
+<br>
 
-Currently refining [SafeExam](#), a secure assessment platform for institutions that can't compromise on trust.
+**SafeExam** — Assessment software institutions trust because it never asks them to compromise.
+
+**MailMyCertificate** — Certificates that generate and deliver themselves, from the browser, before anyone has to think about it.
+
+**AthletixOS** — The quiet infrastructure a sports academy runs on without noticing it's there.
+
+<br>
+<br>
+
+Currently refining SafeExam.
 
 <br>
 <br>
