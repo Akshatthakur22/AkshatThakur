@@ -1,100 +1,72 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
-    <img
-      src="assets/hero-light.svg"
-      alt="Akshat Thakur — Product Engineer building software that feels effortless."
-      width="620">
-  </picture>
-</p>
+<div align="center">
+<br><br>
+
+<img src="./portrait_mosaic.png" width="380" alt="A portrait made of words">
 
 <br>
 
-> *The best software disappears.*
->
-> It quietly helps people accomplish meaningful work without asking them to think about the technology behind it.
->
-> That's the standard I aspire to build toward.
+<sub>build · craft · design · quality · clarity · trust</sub>
 
----
+<br><br>
+
+# Akshat
+
+<sub>Software engineer. Based in [City, Country].</sub>
+
+<br>
+
+</div>
+
+<br><br>
+
+## About
+
+I build software the way I'd want to use it — quiet, fast, and honest about what it is.
+
+Most of my work sits at [your actual focus — e.g. "the intersection of backend systems and interface design"]. I care less about how many things I ship, and more about whether each one still feels right a year later.
+
+<br><br>
 
 ## Selected Work
 
-### SafeExam
+<br>
 
-A secure assessment platform built for institutions where trust, reliability, and thoughtful engineering matter more than feature count.
-
-→ **Explore Project**
+**[Project One Name]**
+[One sentence on why it exists — not what it does, why it needed to exist.]
+`[Stack, only if it matters]` · [Link]
 
 <br>
 
-### MailMyCertificate
-
-Browser-first certificate automation that removes repetitive work while keeping privacy and simplicity at the center.
-
-→ **Explore Project**
+**[Project Two Name]**
+[One sentence, same rule.]
+`[Stack]` · [Link]
 
 <br>
 
-### AthletixOS
+**[Project Three Name]**
+[One sentence, same rule.]
+`[Stack]` · [Link]
 
-Digital infrastructure designed for sports academies — software that supports everyday operations without demanding attention.
+<br><br>
 
-→ **Explore Project**
+## Engineering Philosophy
 
----
+I'd rather remove a feature than explain it.
 
-## How I Think
+Good software disappears. The person using it should feel capable, not impressed. That's the bar I hold my own work to — before a line ships, I ask whether it earns its place.
 
-I care less about the technologies behind a product and more about how naturally people can use it.
+<br><br>
 
-Good engineering should reduce complexity.
+## Currently
 
-Good design should reduce effort.
+[One line, present tense — e.g. "Learning Rust properly, not just reading about it."]
 
-Great products quietly disappear into the background, allowing people to focus on what truly matters.
+<br><br>
 
-That belief shapes every product I build.
+## Contact
 
----
+[you@email.com] · [Twitter/X] · [LinkedIn] · [Website]
 
-## Principles
+<br><br>
 
-- Build things that deserve to exist.
-- Reduce effort before adding features.
-- Craft before convenience.
-- Finish what you start.
-- Earn trust through quality.
-
----
-
-## Current Focus
-
-Today I'm refining **SafeExam** while continuing to explore secure systems, browser-first software, and products designed to remain useful long after trends have changed.
-
----
-
-## Beyond Code
-
-I enjoy studying product design, engineering systems, and the psychology behind software people genuinely enjoy using.
-
-I believe thoughtful products are built where engineering, design, and empathy meet.
-
----
-
-## Connect
-
-I'd love to connect with people who care deeply about building meaningful software.
-
-- Email — <mailto:thakurakshat013@gmail.com>
-- LinkedIn — <https://www.linkedin.com/in/akshatthakur22/>
-- X — <https://x.com/akshatt66612958>
-
----
-
-<p align="center">
-
-**Building software that feels effortless.**
-
-</p>
+</div>
