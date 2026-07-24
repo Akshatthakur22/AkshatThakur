@@ -1,0 +1,9 @@
+export { Hero } from "./Hero";
+export { About } from "./About";
+export { Timeline } from "./Timeline";
+export { Experience } from "./Experience";
+export { Projects } from "./Projects";
+export { Principles } from "./Principles";
+export { Gallery } from "./Gallery";
+export { Future } from "./Future";
+export { Contact } from "./Contact";
