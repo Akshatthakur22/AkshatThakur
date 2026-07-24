@@ -1,25 +1,72 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
-  <img alt="Akshat Thakur — Product Engineer, Founder of SafeExam. Building software that feels effortless." src="assets/hero-light.svg" width="560">
-</picture>
+<div align="center">
+<br><br>
 
-<br>
-<br>
-
-I build software because someone genuinely needs it.  
-The best products disappear — they let people do the work that matters.
+<img src="./portrait_mosaic.png" width="380" alt="A portrait made of words">
 
 <br>
 
-**Currently:** Refining [SafeExam](https://github.com/Akshatthakur22/AkshatThakur), a secure assessment platform for institutions that can't compromise on trust.
+<sub>build · craft · design · quality · clarity · trust</sub>
 
-Also built [MailMyCertificate](https://github.com) (certificates that generate themselves) and [AthletixOS](https://github.com) (the infrastructure sports academies run on without noticing).
+<br><br>
+
+# Akshat
+
+<sub>Software engineer. Based in [City, Country].</sub>
 
 <br>
 
-**I believe:** Longevity over virality. Craft before shipping. Context above features.
+</div>
+
+<br><br>
+
+## About
+
+I build software the way I'd want to use it — quiet, fast, and honest about what it is.
+
+Most of my work sits at [your actual focus — e.g. "the intersection of backend systems and interface design"]. I care less about how many things I ship, and more about whether each one still feels right a year later.
+
+<br><br>
+
+## Selected Work
 
 <br>
 
-[Email](mailto:thakurakshat013@gmail.com) · [LinkedIn](https://www.linkedin.com/in/akshatthakur22/) · [X](https://x.com/akshatt66612958)
+**[Project One Name]**
+[One sentence on why it exists — not what it does, why it needed to exist.]
+`[Stack, only if it matters]` · [Link]
+
+<br>
+
+**[Project Two Name]**
+[One sentence, same rule.]
+`[Stack]` · [Link]
+
+<br>
+
+**[Project Three Name]**
+[One sentence, same rule.]
+`[Stack]` · [Link]
+
+<br><br>
+
+## Engineering Philosophy
+
+I'd rather remove a feature than explain it.
+
+Good software disappears. The person using it should feel capable, not impressed. That's the bar I hold my own work to — before a line ships, I ask whether it earns its place.
+
+<br><br>
+
+## Currently
+
+[One line, present tense — e.g. "Learning Rust properly, not just reading about it."]
+
+<br><br>
+
+## Contact
+
+[you@email.com] · [Twitter/X] · [LinkedIn] · [Website]
+
+<br><br>
+
+</div>
