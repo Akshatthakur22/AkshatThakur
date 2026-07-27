@@ -17,10 +17,15 @@ export interface Project {
   solution: string;
   tech: string[];
   lessons: string[];
+  /** Human-readable build window, e.g. "Oct 2025 — Present". */
+  period?: string;
+  /** Public production URL, used for links and schema.org markup. */
+  liveUrl?: string;
   link?: string;
   github?: string;
   status: "shipped" | "in-progress" | "dreaming";
 }
+
 
 export interface Experience {
   id: string;

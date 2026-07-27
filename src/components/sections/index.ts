@@ -6,4 +6,5 @@ export { Projects } from "./Projects";
 export { Principles } from "./Principles";
 export { Gallery } from "./Gallery";
 export { Future } from "./Future";
+export { Resume } from "./Resume";
 export { Contact } from "./Contact";
